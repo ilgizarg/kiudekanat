@@ -1,0 +1,61 @@
+
+  <app-kiu-dekanat-loading-bar *ngIf="isLoaded$ | async ">
+  </app-kiu-dekanat-loading-bar>
+  <ng-container *ngIf="backendErrors$ | async">
+    <app-kiu-dekanat-backend-error-messages
+      [backendErrors]="backendErrors$ |async "
+    ></app-kiu-dekanat-backend-error-messages>
+  </ng-container>
+
+  <ng-container *ngIf="quiz$ | async as quiz;">
+    <div #quizDialog  class="overlay">
+
+
+    <mat-card  class="mat-card-quiz">
+      <mat-card-header >
+        <mat-card-title>{{ quiz.question }}</mat-card-title>
+        <button mat-icon-button (click)="closeQuiz()" class="close-button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-header>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+          <input type="hidden" formControlName="quizId" name="quizId">
+          <mat-list>
+            <mat-radio-group aria-label="Select an option" formControlName="answer">
+              <mat-list-item *ngFor="let answer of quiz.answers">
+                <mat-radio-button
+                  [id] ="'answer' + answer.answerId"
+                  [value]="answer.answerId"
+                >
+                  {{answer.text}}
+                </mat-radio-button>
+              </mat-list-item>
+            </mat-radio-group>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" type="submit">Send my answer</button>
+        </mat-card-actions>
+      </form>
+
+    </mat-card>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="answerStatus$ | async as status ">
+    <div #quizDialog  class="overlay">
+    <mat-card class="mat-card-quiz">
+      <mat-card-header>
+        <mat-card-title>
+          {{status.status }}
+        </mat-card-title>
+        <mat-card-actions>
+          <button mat-icon-button (click)="closeQuiz()" class="close-button">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card-header>
+    </mat-card>
+    </div>
+  </ng-container>

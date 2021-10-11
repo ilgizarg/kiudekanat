@@ -1,0 +1,119 @@
+@import "../../../app.component";
+
+.overlay {
+  background-color: transparentize(mat-color($primary), .2);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9990;
+
+}
+.block {
+  display: block;
+}
+.mat-card {
+
+  position: absolute;
+  z-index: 9999;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0 0 999px 999px #696969;
+
+  padding:  0;
+
+  &.mat-card-quiz {
+  min-width: 250px;
+  max-width: 550px;
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
+    &:before {
+      content: '';
+      position: absolute;
+      opacity: 0.7;
+      background-image: url('/assets/images/bg_left_top.png');
+      background-repeat: no-repeat;
+      background-size: auto 100px;
+      background-position: left top;
+      height: 100px;
+      width: 100%;
+    }
+
+  .mat-card-header {
+    min-height: 150px;
+    padding: 15px;
+
+
+
+    .image {
+      width: 100%;
+      min-height: 150px;
+      background-repeat: no-repeat;
+      margin-left: -32px;
+      background-size: cover;
+      background-position: left center;
+
+    }
+
+    .close-button {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        button {
+          border: none;
+          cursor: pointer;
+          width: auto;
+          height: auto;
+          min-width: 36px;
+          padding: 4px;
+        }
+        .material-icons {
+          font-size: 16px;
+        }
+    }
+
+    .mat-card-title,
+    .mat-card-subtitle {
+      margin: 0;
+    }
+
+    .mat-card-title {
+      margin-top: 5%;
+      padding: 8px 16px;
+      width: 100%;
+      white-space: break-spaces;
+      word-break: break-word;
+      font-size: 1.5em;
+    }
+
+    .mat-card-subtitle {
+      margin-top: 2%;
+      margin-left: 15%;
+      font-size: 0.75em;
+    }
+
+  }
+
+  .mat-card-content {
+    padding: 16px 32px;
+
+    input[type=radio] {
+      padding: 10px;
+      margin: 10px;
+    }
+
+
+  }
+    mat-card-actions {
+      padding: 15px 56px;
+      margin-bottom: 0;
+    }
+
+
+}
+
+}
